@@ -270,7 +270,7 @@ def L_model_backward(AL, Y, caches, lambd):
     Y = Y.reshape(AL.shape) # after this line, Y is the same shape as AL
     
     # Initializing the backpropagation
-    dAL = -np.divide(Y, AL) + np.divide(1-Y, 1-AL) # derivative of cost with respect to AL
+    dAL = np.nan_to_num(-np.divide(Y, AL) + np.divide(1-Y, 1-AL)) # derivative of cost with respect to AL
     # dAL = AL - Y # derivative of cost with respect to AL
 
     assert(dAL.shape == AL.shape)
